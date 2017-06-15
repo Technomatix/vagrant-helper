@@ -133,3 +133,17 @@ config.vm.synced_folder(
 Vagrant::Util::Platform::mac?
 Vagrant::Util::Platform::windows?
 ```
+
+# Plugins
+
+## NoopCommunicator
+
+NoopCommunicator is a plugin are used in case if Vagrant does not have an access to VMs (e.g. there is no information about ip), so it just runs VMs and does not try to perform additional actions using SSH.
+
+```ruby
+require './plugins/NoopCommunicator'
+
+Vagrant.configure("2") do |config|
+    config.vm.communicator = :noop
+end
+```
